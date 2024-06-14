@@ -7,11 +7,11 @@ import {
   CardHeader,
   CardContent,
   Typography,
-  Box,
 } from '@mui/material';
 import axios from 'axios';
 import { Business, LocationOn, AttachMoney, Event } from '@mui/icons-material';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 
 const fetchJobs = async (pageNo = 0, pageSize = 10, sortBy = 'id') => {
   const res = await axios.get(
@@ -19,7 +19,6 @@ const fetchJobs = async (pageNo = 0, pageSize = 10, sortBy = 'id') => {
       import.meta.env.VITE_API_URL
     }/api/jobs?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${sortBy}`
   );
-  console.log(res.data);
   return res.data;
 };
 
@@ -35,20 +34,25 @@ const JobPosting = () => {
 
   if (isLoading) return 'Loading...';
   if (error) return `An error has occurred: ${error.message}`;
+
   return (
     <Stack width={'100%'} paddingY={2}>
       {data &&
-        data.map((item, index) => (
+        data.content.map((item, index) => (
           <>
-            <Card sx={{ marginBottom: 1 }}>
-              <CardActionArea key={index}>
-                <CardHeader title={item.title} />
+            <Card key={item.id} sx={{ marginBottom: 1 }}>
+              <CardActionArea
+                LinkComponent={Link}
+                to={`/cong-viec/${item.id}`}
+                key={index}
+              >
+                <CardHeader title={item.name} />
                 <CardContent>
                   <Stack direction="row" justifyContent={'space-between'}>
                     <Stack alignItems="center" direction="row" gap={1}>
                       <Business />
                       <Typography variant="body1" color="text.secondary">
-                        {item.company}
+                        {item.companyName}
                       </Typography>
                     </Stack>
                     <Stack alignItems="center" direction="row" gap={1}>
@@ -74,16 +78,16 @@ const JobPosting = () => {
                 </CardContent>
               </CardActionArea>
             </Card>
-            <Stack direction={'row'} justifyContent="flex-end" marginTop={1}>
-              <Pagination
-                count={data.totalPages}
-                variant="outlined"
-                page={page + 1}
-                onChange={(event, value) => setPage(value - 1)}
-              />
-            </Stack>
           </>
         ))}
+      <Stack direction={'row'} justifyContent="flex-end" marginTop={1}>
+        <Pagination
+          count={data.page.totalPages}
+          variant="outlined"
+          page={page + 1}
+          onChange={(event, value) => setPage(value - 1)}
+        />
+      </Stack>
     </Stack>
   );
 };
