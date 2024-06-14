@@ -22,10 +22,8 @@ function App() {
       >
         <Header />
 
-        <Box sx={{ flexGrow: 1, display: 'flex' }}>
-          <main>
-            <Outlet />
-          </main>
+        <Box style={{ flexGrow: 1, display: 'flex' }}>
+          <Outlet />
         </Box>
 
         <footer>

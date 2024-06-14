@@ -30,7 +30,7 @@ const Footer = () => {
           }}
         >
           <Typography variant="h6">Thông tin</Typography>
-          <Link href="#" color="inherit" underline="none">
+          <Link href="/tuyen-dung" color="inherit" underline="none">
             Tuyển dụng
           </Link>
 
