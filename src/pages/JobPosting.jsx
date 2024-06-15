@@ -43,7 +43,7 @@ const JobPosting = () => {
             <Card key={item.id} sx={{ marginBottom: 1 }}>
               <CardActionArea
                 LinkComponent={Link}
-                to={`/cong-viec/${item.id}`}
+                to={`/tuyen-dung/${item.id}`}
                 key={index}
               >
                 <CardHeader title={item.name} />

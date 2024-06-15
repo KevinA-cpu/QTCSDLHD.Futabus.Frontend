@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
+import JobLayout from './pages/JobLayout.jsx';
 import JobPosting from './pages/JobPosting.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -15,12 +16,17 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: 'tuyen-dung',
-        element: <JobPosting />,
-      },
-      {
-        path: 'cong-viec/:id',
-        element: <JobDetails />,
+        element: <JobLayout />,
+        children: [
+          {
+            path: 'tuyen-dung',
+            element: <JobPosting />,
+          },
+          {
+            path: 'tuyen-dung/:id',
+            element: <JobDetails />,
+          },
+        ],
       },
     ],
   },
