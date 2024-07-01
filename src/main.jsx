@@ -9,6 +9,11 @@ import JobDetails from './pages/JobDetails.jsx';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import './index.css';
+import RouteDetail from './pages/route/routeDetail.jsx';
+import RouteListTable from './pages/route/listRoutes.jsx';
+import ScheduleDetail from './pages/route/scheduleDetail.jsx';
+import AddNewRoute from './pages/route/addNewRoute.jsx';
+import AddNewSchedule from './pages/route/addNewSchedule.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,11 +30,31 @@ const router = createBrowserRouter([
           {
             path: 'tuyen-dung/:id',
             element: <JobDetails />,
-          },
+          }
         ],
       },
+      {
+        path: 'futabus-routes',
+        element: <RouteListTable />,
+      },
+      {
+        path: 'futabus-routes/:routeId',
+        element: <RouteDetail />,
+      },
+      {
+        path: 'futabus-routes/add-new',
+        element: <AddNewRoute />,
+      },
+      {
+        path: 'futabus-routes/:routeId/schedules/add-new',
+        element: <AddNewSchedule />,
+      },
+      {
+        path: 'futabus-routes/:routeId/schedules/:scheduleId',
+        element: <ScheduleDetail />,
+      }
     ],
-  },
+  }
 ]);
 
 const queryClient = new QueryClient();

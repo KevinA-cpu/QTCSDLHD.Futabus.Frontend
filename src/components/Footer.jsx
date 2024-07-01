@@ -62,12 +62,6 @@ const Footer = () => {
               Tòa nhà 2
             </Link>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <LocationOn />
-            <Link href="#" color="inherit" underline="none">
-              Tòa nhà 3
-            </Link>
-          </Box>
           <Divider orientation="vertical" flexItem />
         </Box>
         <Divider orientation="vertical" flexItem />
