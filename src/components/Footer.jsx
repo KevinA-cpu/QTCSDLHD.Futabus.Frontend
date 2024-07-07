@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography, Link, Divider } from '@mui/material';
 import { Call, LocationOn } from '@mui/icons-material';
 
@@ -60,12 +59,6 @@ const Footer = () => {
             <LocationOn />
             <Link href="#" color="inherit" underline="none">
               Tòa nhà 2
-            </Link>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <LocationOn />
-            <Link href="#" color="inherit" underline="none">
-              Tòa nhà 3
             </Link>
           </Box>
           <Divider orientation="vertical" flexItem />

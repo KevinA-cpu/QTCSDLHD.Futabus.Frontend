@@ -9,6 +9,14 @@ import JobDetails from './pages/JobDetails.jsx';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import './index.css';
+import RouteDetail from './pages/route/routeDetail.jsx';
+import RouteListTable from './pages/route/listRoutes.jsx';
+import ScheduleDetail from './pages/route/scheduleDetail.jsx';
+import AddNewRoute from './pages/route/addNewRoute.jsx';
+import AddNewSchedule from './pages/route/addNewSchedule.jsx';
+import SignIn from './pages/signIn.jsx';
+import SignUp from './pages/signup.jsx';
+import LandingPage from './pages/landingPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,11 +33,45 @@ const router = createBrowserRouter([
           {
             path: 'tuyen-dung/:id',
             element: <JobDetails />,
-          },
+          }
         ],
       },
+
+      {
+        path: '/',
+        element: <LandingPage />,
+      },
+
+      {
+        path: 'sign-in',
+        element: <SignIn />,
+      },
+      {
+        path: 'sign-up',
+        element: <SignUp />,
+      },
+      {
+        path: 'futabus-routes',
+        element: <RouteListTable />,
+      },
+      {
+        path: 'futabus-routes/:routeId',
+        element: <RouteDetail />,
+      },
+      {
+        path: 'futabus-routes/add-new',
+        element: <AddNewRoute />,
+      },
+      {
+        path: 'futabus-routes/:routeId/schedules/add-new',
+        element: <AddNewSchedule />,
+      },
+      {
+        path: 'futabus-routes/:routeId/schedules/:scheduleId',
+        element: <ScheduleDetail />,
+      }
     ],
-  },
+  }
 ]);
 
 const queryClient = new QueryClient();
