@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography, Link, Divider } from '@mui/material';
 import { Call, LocationOn } from '@mui/icons-material';
 

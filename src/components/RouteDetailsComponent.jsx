@@ -5,8 +5,8 @@ import AddIcon from '@mui/icons-material/Add';
 const RouteDetailsComponent = ({ data }) => {
   if (!data) return null;
 
-  console.log(data);
-  const { route, stops, schedules, buses, drivers } = data;
+  // eslint-disable-next-line react/prop-types
+  const { route, stops, schedules} = data;
   return (
     <TableContainer component={Paper}>
       <Typography variant="h5" gutterBottom sx={{ textAlign: 'center', paddingTop: 2 }}>
@@ -15,32 +15,39 @@ const RouteDetailsComponent = ({ data }) => {
 
       <Grid container spacing={3}>
       <Grid item xs={12} px={3}>
-        <Typography variant="subtitle1" px={4}> Duration: {route.duration}, Distance: {route.distance} km</Typography>
+        <Typography variant="subtitle1" px={1}>+<strong>Duration: </strong>{route.duration}, <strong>Distance:</strong> {route.distance} km</Typography>
       </Grid>
-      <Grid item xs={12} px={3}>
+      <Grid item xs={12} p={3}>
         <Typography variant="h6" px={1}>Stops:</Typography>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
+                <TableCell>STT</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Location</TableCell>
+                <TableCell>Facilities</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {stops.map(stop => (
+              {stops.map((stop,index) => (
                 <TableRow key={stop.id}>
+                  <TableCell>{index+1}</TableCell>
                   <TableCell>{stop.name}</TableCell>
                   <TableCell>{stop.location}</TableCell>
+                  <TableCell>{stop.facilities}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       </Grid>
-      <Grid item xs={12} px={3}>
+      <Grid item xs={12} px={3} py={3}>
         <Typography variant="h6" px={1}>Schedules:
           <Button variant="outlined"
+              sx={{
+                marginLeft: 3,
+              }}
               component={Link}
               to={`schedules/add-new`}>
               Create
@@ -51,17 +58,23 @@ const RouteDetailsComponent = ({ data }) => {
           <Table>
             <TableHead>
               <TableRow>
+                <TableCell>STT</TableCell>
                 <TableCell>Departure Time</TableCell>
                 <TableCell>Arrival Time</TableCell>
+                <TableCell>price</TableCell>
+                <TableCell>ticketType</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {schedules.map(schedule => (
+              {schedules.map((schedule, index) => (
                 <TableRow key={schedule.id}>
+                  <TableCell>{index + 1}</TableCell>
                   <TableCell>{new Date(schedule.departureTime).toLocaleString()}</TableCell>
                   <TableCell>{new Date(schedule.arrivalTime).toLocaleString()}</TableCell>
+                  <TableCell>{schedule.price}</TableCell>
+                  <TableCell>{schedule.ticketType}</TableCell>
                   <TableCell>{schedule.status}</TableCell>
                   <TableCell style={{ width: '15%' }}>
                       <Button
@@ -79,52 +92,6 @@ const RouteDetailsComponent = ({ data }) => {
           </Table>
         </TableContainer>
       </Grid>
-      {/* <Grid item xs={12} px={3}>
-        <Typography variant="h6" px={1}>Buses:</Typography>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>License Plate</TableCell>
-                <TableCell>Type</TableCell>
-                <TableCell>Capacity</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {buses.map(bus => (
-                <TableRow key={bus.id}>
-                  <TableCell>{bus.licensePlate}</TableCell>
-                  <TableCell>{bus.type}</TableCell>
-                  <TableCell>{bus.capacity}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Grid>
-      <Grid item xs={12} px={3}>
-        <Typography variant="h6" px={1}>Drivers:</Typography>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>License Number</TableCell>
-                <TableCell>Experience (years)</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {drivers.map(driver => (
-                <TableRow key={driver.id}>
-                  <TableCell>{driver.name}</TableCell>
-                  <TableCell>{driver.licenseNumber}</TableCell>
-                  <TableCell>{driver.experience}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Grid> */}
     </Grid>
 
     </TableContainer>

@@ -1,4 +1,4 @@
-import { CssBaseline, Container, Box, Typography } from '@mui/material';
+import { CssBaseline, Box, Container } from '@mui/material';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <Container
+      <Box
         sx={{
           display: 'flex',
           minHeight: '100vh',
@@ -21,15 +21,15 @@ function App() {
         }}
       >
         <Header />
-
-        <Box style={{ flexGrow: 1, display: 'flex' }}>
-          <Outlet />
-        </Box>
-
+        <Container>
+          <Box style={{ flexGrow: 1, display: 'flex' }}>
+            <Outlet />
+          </Box>
+        </Container>
         <footer>
-          <Footer />
+            <Footer />
         </footer>
-      </Container>
+      </Box>
     </>
   );
 }

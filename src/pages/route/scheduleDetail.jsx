@@ -16,6 +16,7 @@ const ScheduleDetail = () => {
     const fetchRouteData = async () => {
       try {
         const response = await axios.get(`${API_URL}?routeId=${routeId}`);
+        console.log(response.data.stops);
         setRouteData(response.data);
       } catch (error) {
         console.error('Error fetching route details:', error);
