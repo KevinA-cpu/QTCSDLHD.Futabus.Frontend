@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "6689681248d483071c578ba8"
+  },
+  "query_key": "12345",
+  "ticket_id": "01423",
+  "customer_name": "John Dis",
+  "price": "150000",
+  "currency": "VND",
+  "license_plate": "29B-43221",
+  "seat": "A14",
+  "from": "Ha Noi bus stop",
+  "to": "Ninh Binh bus stop",
+  "departure_time": "20:00 GMT +7",
+  "departure_date": "2024-08-07"
+},
+{
+  "_id": {
+    "$oid": "6689685e48d483071c578baa"
+  },
+  "query_key": "23124",
+  "ticket_id": "12348",
+  "customer_name": "Mike Dean",
+  "price": "120000",
+  "currency": "VND",
+  "license_plate": "59B-42221",
+  "seat": "A4",
+  "from": "Mien Tay bus stop (HCM)",
+  "to": "Lon An bus stop",
+  "departure_time": "21:30 GMT +7",
+  "departure_date": "2024-07-17"
+}]
