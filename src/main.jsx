@@ -17,6 +17,8 @@ import AddNewSchedule from './pages/route/addNewSchedule.jsx';
 import SignIn from './pages/signIn.jsx';
 import SignUp from './pages/signup.jsx';
 import LandingPage from './pages/landingPage.jsx';
+import OrderPage from './pages/order/OrderPage.jsx';
+import PaymentPage from './pages/order/PaymentPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -69,19 +71,25 @@ const router = createBrowserRouter([
       {
         path: 'futabus-routes/:routeId/schedules/:scheduleId',
         element: <ScheduleDetail />,
-      }
+      },
+      {
+        path: "dat-ve/:routeId",
+        element: <OrderPage />,
+      },
+      {
+        path: "thanh-toan/:orderId",
+        element: <PaymentPage />,
+      },
     ],
   }
 ]);
 
 const queryClient = new QueryClient();
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+ReactDOM.createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <RouterProvider router={router} />
-      </LocalizationProvider>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <RouterProvider router={router} />
+        </LocalizationProvider>
     </QueryClientProvider>
-  </React.StrictMode>
 );
