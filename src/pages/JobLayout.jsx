@@ -81,7 +81,7 @@ const fetchApplicationsbWithPhoneNumberAndIdCard = async (
   const res = await axios.get(
     `${
       import.meta.env.VITE_API_URL
-    }/api/applications?phoneNumber=${phoneNumber}&code=${idCard}`
+    }/api/applications?phoneNumber=${phoneNumber}&idCard=${idCard}`
   );
   return res.data;
 };
